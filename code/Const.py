@@ -1,0 +1,6 @@
+WIN_WIDTH = 1080
+WIN_HEIGHT = 720
+C_ORANGE = (255, 165, 0)
+MENU_OPTION = ["Start", "Options", "Exit"]
+C_WHITE = (255, 255, 255)
+C_YELLOW = (255, 255, 0)
