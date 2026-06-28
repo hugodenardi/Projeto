@@ -33,8 +33,8 @@ class Menu:
                     self.menu_text(22, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 195 + 25 * i), font_name="Arial Black", draw_border=True)
 
             # Canto Inferior Esquerdo: Condição de vitória (Duas linhas)
-            self.menu_text(14, "Vença voando", C_WHITE, (15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
-            self.menu_text(14, "por 2 minutos", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
+            self.menu_text(20, "Vença voando", C_WHITE, (15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
+            self.menu_text(20, "por 2 minutos", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
 
             # Canto Inferior Direito: Comandos do jogo
             self.menu_text(14, "Comandos:", C_WHITE, (WIN_WIDTH - 15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="right")

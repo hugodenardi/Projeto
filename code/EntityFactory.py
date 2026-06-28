@@ -1,8 +1,9 @@
-import random 
+import random
 from code.Background import Background
 from code.Const import WIN_HEIGHT, WIN_WIDTH
 from code.Player import Player
 from code.Fuel import Fuel
+from code.Enemy import Enemy
 
 class EntityFactory:
 
@@ -19,8 +20,15 @@ class EntityFactory:
             case 'Player':
                 return Player(name='Player', position=(10, WIN_HEIGHT // 2))
                 
-            # --- NOVO CASE ---
             case 'Fuel':
-                # Aparece no final da tela (direita) em uma altura aleatória
                 random_y = random.randint(30, WIN_HEIGHT - 30)
                 return Fuel(name='Fuel', position=(WIN_WIDTH, random_y))
+                
+            case 'Enemy1':
+                random_y = random.randint(30, WIN_HEIGHT - 30)
+                return Enemy(name='Enemy1', position=(WIN_WIDTH, random_y))
+                
+            case 'Enemy2':
+                random_y = random.randint(30, WIN_HEIGHT - 30)
+                return Enemy(name='Enemy2', position=(WIN_WIDTH, random_y))
+            

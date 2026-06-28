@@ -1,15 +1,16 @@
-# code/Player.py
 import pygame
 
 from code.Const import ENTITY_SPEED, WIN_HEIGHT, WIN_WIDTH
 from code.Entity import Entity
 
+
 class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position, size=(50, 50))
-        self.max_fuel = 15 * 60 # 15 segundos (a 60 frames por segundo)
+        # 8 segundos (a 60 frames por segundo)
+        self.max_fuel = 8 * 60 
         self.fuel = self.max_fuel
-        self.is_falling = False # Flag para quando o combustível acabar
+        self.is_falling = False
         
 
     def move(self):
