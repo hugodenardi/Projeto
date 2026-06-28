@@ -7,14 +7,14 @@ from code.Entity import Entity
 class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position, size=(50, 50))
-        # 8 segundos (a 60 frames por segundo)
+        # 8 seconds of fuel at 60 FPS (8 * 60 = 480 frames)
         self.max_fuel = 8 * 60 
         self.fuel = self.max_fuel
         self.is_falling = False
         
 
     def move(self):
-        # Se estiver sem combustível, o avião apenas cai
+        # If the player is falling, move downwards at a constant speed and skip other movement checks
         if self.is_falling:
             self.rect.centery += 4 # Velocidade da queda
             return
