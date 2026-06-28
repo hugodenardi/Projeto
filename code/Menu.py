@@ -33,12 +33,12 @@ class Menu:
                     self.menu_text(22, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 195 + 25 * i), font_name="Arial Black", draw_border=True)
 
             # Left Bottom Corner: Game Objective
-            self.menu_text(20, "Vença voando", C_WHITE, (15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
-            self.menu_text(20, "por 1 minuto", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
+            self.menu_text(14, "Vença voando", C_WHITE, (15, WIN_HEIGHT - 40), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
+            self.menu_text(14, "por 1 minuto", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
 
             # Right Bottom Corner: Game Controls
-            self.menu_text(20, "Comandos:", C_WHITE, (WIN_WIDTH - 15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
-            self.menu_text(20, "Setas do Teclado", C_YELLOW, (WIN_WIDTH - 15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
+            self.menu_text(14, "Comandos:", C_WHITE, (WIN_WIDTH - 15, WIN_HEIGHT - 40), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
+            self.menu_text(14, "Setas do Teclado", C_YELLOW, (WIN_WIDTH - 15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
 
             pygame.display.flip()
 

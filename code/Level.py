@@ -125,7 +125,7 @@ class Level:
             
             if player:
                 fuel_pct = (player.fuel / player.max_fuel) * 100
-                self.level_text(25, f'Combustivel: {fuel_pct:.0f}%', C_YELLOW, (WIN_WIDTH - 100, 70))
+                self.level_text(20, f'Combustivel: {fuel_pct:.0f}%', C_YELLOW, (WIN_WIDTH - 115, 70))
                 
                 if player.is_falling and player.rect.top >= WIN_HEIGHT:
                     self.game_over = True
