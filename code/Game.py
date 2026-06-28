@@ -2,6 +2,8 @@
 from code.Const import MENU_OPTION, WIN_WIDTH, WIN_HEIGHT
 from code.Level import Level
 from code.Menu import Menu
+import sys
+
 
 # Import the pygame library
 import pygame
@@ -33,10 +35,10 @@ class Game:
                 level_return = level.run()
 
             # Check if the user selected the third option to exit the game
-            elif menu_return == MENU_OPTION[2]:  # Options
+            elif menu_return == MENU_OPTION[1]:  # Exit
                 # Uninitialize all pygame modules and terminate the program
                 pygame.quit()
-                quit()
+                sys.exit()  # Exit the program gracefully
 
             # Handle any other unmapped menu options
             else:
