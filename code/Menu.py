@@ -34,11 +34,11 @@ class Menu:
 
             # Canto Inferior Esquerdo: Condição de vitória (Duas linhas)
             self.menu_text(20, "Vença voando", C_WHITE, (15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
-            self.menu_text(20, "por 2 minutos", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
+            self.menu_text(20, "por 1 minuto", C_WHITE, (15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="left")
 
             # Canto Inferior Direito: Comandos do jogo
-            self.menu_text(14, "Comandos:", C_WHITE, (WIN_WIDTH - 15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
-            self.menu_text(14, "Setas do Teclado", C_YELLOW, (WIN_WIDTH - 15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
+            self.menu_text(20, "Comandos:", C_WHITE, (WIN_WIDTH - 15, WIN_HEIGHT - 35), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
+            self.menu_text(20, "Setas do Teclado", C_YELLOW, (WIN_WIDTH - 15, WIN_HEIGHT - 20), font_name="Lucida Sans Typewriter", draw_border=True, align="right")
 
             pygame.display.flip()
 

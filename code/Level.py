@@ -1,3 +1,4 @@
+# code/Level.py
 import sys
 import math
 import random
@@ -41,8 +42,6 @@ class Level:
             clock.tick(60)
             self.window.fill((0, 0, 0)) 
             
-            player = next((ent for ent in self.entity_list if ent.name == 'Player'), None)
-            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -56,8 +55,11 @@ class Level:
                             if self.menu_option == 0:
                                 self.reset_level() 
                             elif self.menu_option == 1:
-                                pygame.quit()
-                                sys.exit() 
+                                pygame.mixer_music.stop()
+                                return # Returns to the main menu instead of closing the game window
+
+            # Fetch the player entity after the event loop to ensure a fresh reference if reset_level was triggered
+            player = next((ent for ent in self.entity_list if ent.name == 'Player'), None)
 
             if player and not (self.game_over or self.victory):
                 if not player.is_falling and self.game_time > 0:
@@ -92,8 +94,10 @@ class Level:
                             self.entity_list.remove(ent)
 
                     elif ent.name in ['Enemy1', 'Enemy2']:
-                        # Collision with enemy triggers game over logic
-                        if not player.is_falling and player.rect.colliderect(ent.rect):
+                        player_hitbox = player.rect.inflate(-20, -20)
+                        enemy_hitbox = ent.rect.inflate(-20, -20)
+                        
+                        if not player.is_falling and player_hitbox.colliderect(enemy_hitbox):
                             player.is_falling = True
                             player.fuel = 0 
                             pygame.mixer_music.stop()
@@ -115,10 +119,8 @@ class Level:
             # Calculate zoom effect for the last 10 seconds
             time_zoom = 1.0
             if self.game_time <= 10 * 60 and self.game_time > 0 and not player.is_falling:
-                # Use sine wave to alternate scale between 1.0 and 1.3
                 time_zoom = 1.0 + abs(math.sin(pygame.time.get_ticks() / 150.0)) * 0.3
 
-            # Draw UI with larger fonts and yellow color. Time font is slightly larger (35) than fuel (25)
             self.level_text(35, f'{mins:02d}:{secs:02d}', C_YELLOW, (WIN_WIDTH - 70, 30), zoom=time_zoom)
             
             if player:
@@ -150,26 +152,21 @@ class Level:
         self.level_text(30, 'Sair', color_sair, (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 50))
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, zoom: float = 1.0):
-        # Create base font
         text_font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size, bold=True)
         
-        # Render main text and black outline text
         main_surf = text_font.render(text, True, text_color).convert_alpha()
         outline_surf = text_font.render(text, True, C_BLACK).convert_alpha()
         
-        # Scale surfaces if zoom is applied
         if zoom != 1.0:
             new_width = int(main_surf.get_width() * zoom)
             new_height = int(main_surf.get_height() * zoom)
             main_surf = pygame.transform.scale(main_surf, (new_width, new_height))
             outline_surf = pygame.transform.scale(outline_surf, (new_width, new_height))
             
-        # Draw black border offset in 8 directions
         for dx, dy in [(-2,-2), (2,-2), (-2,2), (2,2), (-2,0), (2,0), (0,-2), (0,2)]:
             outline_rect = outline_surf.get_rect(center=(text_center_pos[0] + dx, text_center_pos[1] + dy))
             self.window.blit(outline_surf, outline_rect)
             
-        # Draw main text in the center
         text_rect = main_surf.get_rect(center=text_center_pos)
         self.window.blit(main_surf, text_rect)
         
